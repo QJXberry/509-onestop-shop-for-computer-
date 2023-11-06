@@ -1,7 +1,7 @@
 import React from "react";
 import "./SiteManagerBalance.css";
 
-function SiteManagerBalance() {
+function SiteManagerBalance({}) {
   return <div className="site-manager-balance">Site Manager balance</div>;
 }
 

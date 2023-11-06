@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import "./Table.css";
 
-function Table() {
-  const [data, setData] = useState([]);
+function Table({ data, setData }) {
   const [selected, setSelected] = useState([]);
 
   const handleRemove = () => {
