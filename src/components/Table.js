@@ -17,8 +17,8 @@ function Table({ data, setData }) {
           <tr>
             <th></th>
             <th>Store Id</th>
-            <th>Store name</th>
-            <th>Inventory</th>
+            <th>Store Name</th>
+            <th>Inventory Amount</th>
             <th>Balance</th>
           </tr>
         </thead>

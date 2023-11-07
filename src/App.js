@@ -1,5 +1,6 @@
 import "./App.css";
-import React, { useState, useMemo } from "react";
+import axios from "axios";
+import React, { useState, useMemo, useEffect } from "react";
 import Table from "./components/Table";
 import TotalInventory from "./components/TotalInventory";
 import SiteManagerBalance from "./components/SiteManagerBalance";
@@ -21,6 +22,19 @@ function App() {
   ]);
 
   //const [data, setData] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const result = await axios.get("YOUR_AWS_ENDPOINT");
+        setData(result.data);
+      } catch (error) {
+        console.error("Error fetching data: ", error);
+      }
+    }
+
+    fetchData();
+  }, []);
 
   const siteManagerBalance = useMemo(() => {
     const totalBalance = data.reduce((acc, store) => acc + store.balance, 0);
