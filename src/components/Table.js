@@ -7,27 +7,25 @@ function Table({ stores, setStores, computers }) {
 
   const handleRemove = async () => {
     const storesToDelete = stores.filter((item) => selected.includes(item.id));
-    try {
-      for (const store of storesToDelete) {
-        let body = { storeId: store.id };
-        let payload = { body: JSON.stringify(body) };
-        const response = await axios.post(
-          "https://d2socpeyl6.execute-api.us-east-2.amazonaws.com/iterationOne/remove",
-          payload
-        );
-        let payload_back = JSON.parse(response.data.body);
-        if (payload_back.message) {
-          console.log("Store removed successfully!");
-        } else {
-          console.log("Store removed was not successful.");
-        }
-      }
-      setStores((prevData) =>
-        prevData.filter((item) => !selected.includes(item.storeId))
+
+    const deletePromises = storesToDelete.map(async (store) => {
+      let body = { storeId: store.id };
+      let payload = { body: JSON.stringify(body) };
+      await axios.post(
+        "https://d2socpeyl6.execute-api.us-east-2.amazonaws.com/iterationOne/remove",
+        payload
       );
-      setSelected([]);
+    });
+
+    try {
+      await Promise.all(deletePromises);
+
+      setStores((prevStores) =>
+        prevStores.filter((store) => !selected.includes(store.id))
+      );
+      setSelected([]); // Reset selection
     } catch (error) {
-      console.error("Failed to delete store:", error);
+      console.error("Failed to delete store(s):", error);
     }
   };
 
