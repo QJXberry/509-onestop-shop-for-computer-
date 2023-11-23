@@ -1,8 +1,48 @@
 .App {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 20px;
-    box-sizing: border-box;
-    background-color: #f7f7f7;
-  }
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #f7f7f7;
+}
+
+/* Additional styles for login form */
+.login-form {
+  max-width: 300px;
+  margin: 50px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.login-form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box; /* Makes sure padding doesn't affect the width */
+}
+
+.login-form button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background-color: #5C6BC0;
+  color: white;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.login-form button:hover {
+  background-color: #3F51B5;
+}
+
+.login-form .error {
+  color: #D32F2F;
+  margin-top: 10px;
+  text-align: center;
+}
   

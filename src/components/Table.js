@@ -16,7 +16,6 @@ function Table({ stores, setStores, computers }) {
         payload
       );
     });
-
     try {
       await Promise.all(deletePromises);
 
