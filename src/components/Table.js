@@ -22,7 +22,7 @@ function Table({ stores, setStores, computers }) {
       setStores((prevStores) =>
         prevStores.filter((store) => !selected.includes(store.id))
       );
-      setSelected([]); // Reset selection
+      setSelected([]);
     } catch (error) {
       console.error("Failed to delete store(s):", error);
     }
@@ -72,7 +72,7 @@ function Table({ stores, setStores, computers }) {
               <td>{store.id}</td>
               <td>{store.name}</td>
               <td>{calculateInventoryAmount(store.id)}</td>
-              <td>{0}</td>
+              <td>{store.balance}</td>
             </tr>
           ))}
         </tbody>
