@@ -28,6 +28,24 @@ function Table({ stores, setStores, computers }) {
     }
   };
 
+  const sortStoresByInventoryValue = (order) => {
+    setStores((prevStores) => {
+      const sortedStores = [...prevStores];
+      sortedStores.sort((a, b) => {
+        const inventoryA = calculateInventoryAmount(a.id);
+        const inventoryB = calculateInventoryAmount(b.id);
+
+        if (order === "ASC") {
+          return inventoryA - inventoryB;
+        } else if (order === "DESC") {
+          return inventoryB - inventoryA;
+        }
+        return 0;
+      });
+      return sortedStores;
+    });
+  };
+
   const calculateInventoryAmount = (storeId) => {
     const storeComputers = computers.filter(
       (computer) => computer.store_id === storeId
@@ -41,13 +59,17 @@ function Table({ stores, setStores, computers }) {
 
   return (
     <div className="table-container">
+      <div className="sorting-controls">
+        <button onClick={() => sortStoresByInventoryValue("ASC")}>ASC</button>
+        <button onClick={() => sortStoresByInventoryValue("DESC")}>DESC</button>
+      </div>
       <table>
         <thead>
           <tr>
             <th></th>
             <th>Store Id</th>
             <th>Store Name</th>
-            <th>Inventory Amount</th>
+            <th>Inventory $$ Amount</th>
             <th>Balance</th>
           </tr>
         </thead>

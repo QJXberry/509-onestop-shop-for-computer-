@@ -10,7 +10,7 @@ function TotalInventory({ stores, setStores, computers }) {
 
   return (
     <div className="total-inventory">
-      Total Inventory Amount: {totalInventoryAmount}
+      Total Inventory $$ Amount: {totalInventoryAmount}
     </div>
   );
 }
